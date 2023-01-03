@@ -61,3 +61,19 @@ This package contains three key components:
       ```
 ---
 # GETTING STARTED
+### **You must have a version of MATLAB onwards of the 2020 release and Image Processing Toolbox installed.**
+
+1. Clone this package to an accessible directory.
+3. Open Matlab (version 2021 onwards with Image Processing Toolbox installed) and navigate to the package directory.
+4. Execute _app_selector_ in the command line and select the root folder which contains experiment data. The program should then display a tree-node file explorer with folders and .nc files.
+
+    - **Experiment data is assumed to be contained in NetCDF files.**
+    - **By default, the image data is assumed to be stored in a variable titled _'SST'_. This can be changed by opening _exptdata.loadImage_ and changing _'SST'_ to the desired variable**
+    ```javascript
+    [line 659] im = ncread(obj.ncinfo.Filename,'SST',[1 1 imageindex],[Inf Inf 1]);
+    ```
+5. Using the checkmark boxes beside the file/folder nodes, _mark_ experiments for preview. Experiments that are marked will be available for preview in a figure window.
+  - Use the _image slider_ to preview the output of the .nc file.
+  - Use the _experiment slider_ to preview the output of different .nc files.
+  - **Marked experiments will be imported to the 'base' workspace under the variable _expts_ as a cellular list of filepaths.**
+6. With an experiment selected (and marked), press _Optical Flow_ to open the Optical-Flow interface application.
