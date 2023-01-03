@@ -161,20 +161,22 @@ classdef exptdata<handle
             Z = linspace(-max(Z)/2,max(Z)/2,zs); % Symmetric vectors
             X = linspace(-max(X)/2,max(X)/2,xs);
             
-            adata = mask;
+            
             if mask
-                [ux,adata] = obj.applyMask(ux);
+                ux = obj.applyMask(ux);
                 uy = obj.applyMask(uy);
             end
 
             U   = sqrt(ux.^2+uy.^2);
             vor = vorticity(ux,uy);
-            %% Viewing modes     
+            %% Viewing modes
+            adata = mask;
             cmap = 'balance';
             quivercolor = 'r';
             switch view
                 case 'Image'
                     img = im;
+                    adata = mask;
                     cmap = 'parula';
                     quivercolor = 'k';
                     clim = [25 30];

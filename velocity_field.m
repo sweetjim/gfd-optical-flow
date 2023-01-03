@@ -158,8 +158,9 @@ out.vor = vor;
         pivPar.iaStepX = [32 8 4];       % grid spacing of velocity vectors in X
 
         pivPar.ccMethod = 'fft';
-
+        warning off
         [pivData1] = pivAnalyzeImagePair(Im1,Im2,pivPar);
+        warning on
 
         ux0=pivData1.U;
         uy0=pivData1.V;

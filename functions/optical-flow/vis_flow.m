@@ -9,10 +9,13 @@ offset  = 0;
 mag     = 1;
 col     = 'b';
 ds      = 1;
-ax      = gca;
+ax      = [];
 X       = [];
 Y       = [];
 parseInput(varargin)
+if isempty(ax)
+    ax = gca;
+end
 %% Quiver
 [sy sx] = size(ux);
 if (gx==0)

@@ -1,7 +1,4 @@
 function previewExpt(callingApp,resolution)
-if nargin==1
-    resolution = [];
-end
 OE          = callingApp.openExpt;
 if iscell(OE)
 OE = OE{1};
@@ -17,7 +14,7 @@ catch
 end
 %% image manipulation
 im(im==0)=NaN;
-im=image_preprocessing(im,'polar','res',resolution);
+im=image_preprocessing(im,'polar','res',re);
 %%
 caxis([20 25])
 imagesc(im,'AlphaData',~isnan(im))
