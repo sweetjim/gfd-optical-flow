@@ -77,3 +77,17 @@ This package contains three key components:
   - Use the _experiment slider_ to preview the output of different .nc files.
   - **Marked experiments will be imported to the 'base' workspace under the variable _expts_ as a cellular list of filepaths.**
 6. With an experiment selected (and marked), press _Optical Flow_ to open the Optical-Flow interface application.
+
+---
+# Saving OpticalFlow data
+If the Optical-Flow app is open
+The script _sequencer.m_ is an example of processing
+
+---
+# MAKING CHANGES TO DEFAULT SETTINGS
+### Directory of experiments
+  - Modify _set_startup.m_
+### NetCDF variable
+  - Modify _exptdata.loadImage_
+### Reference frame (cartesian or polar)
+  - Modify _exptdata.refframe_
