@@ -1,0 +1,24 @@
+function play(M,u,v)
+
+for i=1:size(M,3)
+    imagesc(M(:,:,i))
+    if i==1
+        clim=caxis;
+    end
+    if nargin>1
+        hold on
+        try
+            vis_flow(u(:,:,i),v(:,:,i))
+        catch
+
+        end
+        hold off
+    end
+    caxis(clim);
+    try
+        cmocean('balance','pivot',0);
+    end
+    pause(.1)
+end
+
+

@@ -635,13 +635,18 @@ classdef exptdata<handle
         end
     end
     methods % IMAGE LOADING AND DIMENSIONS
-        function im = loadImage(obj,imageindex)
+        function im = loadImage(obj,imageindex,variable)
             % LOADIMAGE loads the 'SST' with [1 1 idx] x-z-t index,[Inf Inf 1] x-z-t range
             %_________________________________________________________________
             %_________________________________________________________________
             %   Input argument:
+            %   (REQUIRED)
             %   imageindex  -   [int] 
             %                   index of the time-series to be loaded 
+            %   (OPTIONAL)
+            %   variable    -   [string] 
+            %                   Name of the variable to load. 
+            %                   DEFAULT IS 'SST'.
             %_________________________________________________________________
             %_________________________________________________________________
             %   Output argument:
@@ -656,7 +661,11 @@ classdef exptdata<handle
             elseif imageindex>numel(obj.times)
                 imageindex = numel(obj.times);
             end
-            im = ncread(obj.ncinfo.Filename,'SST',[1 1 imageindex],[Inf Inf 1]);
+
+            if nargin<3
+                variable = 'SST';
+            end
+            im = ncread(obj.ncinfo.Filename,variable,[1 1 imageindex],[Inf Inf 1]);
             %% Manipulation
             im(im==0)=NaN; % Set 0's to NaN
             im = image_preprocessing(im,'square');
